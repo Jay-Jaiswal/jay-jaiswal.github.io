@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jay Jaiswal | Project Catalog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        transition:
+          background-color 0.3s,
+          color 0.3s;
+      }
+      /* Brutalist Styles */
+
+      .brutal-border {
+        border: 3px solid black;
+      }
+      .brutal-shadow {
+        box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+      }
+      .brutal-shadow-hover:hover {
+        box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+        transform: translate(4px, 4px);
+        transition: all 0.1s ease;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gray-50 text-black min-h-screen p-6 md:p-12 lg:p-20 selection:bg-black selection:text-white transition-colors"
+  >
+    <div
+      class="max-w-7xl mx-auto border-x-[12px] border-t-[12px] border-black bg-white brutal-border brutal-shadow p-6 md:p-12 transition-colors"
+    >
+      <!-- Header Section -->
+      <header
+        class="mb-12 border-b-4 border-black pb-8 flex flex-col md:flex-row md:items-end justify-between gap-6"
+      >
+        <div class="flex-1">
+          <div class="flex justify-between items-start mb-3">
+            <h1
+              class="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none"
+            >
+              Jay Jaiswal
+            </h1>
+          </div>
+          <p class="text-xl md:text-2xl font-bold text-gray-700 tracking-tight">
+            Software Engineer | Project Catalog
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3 mt-4 md:mt-0">
+          <a
+            href="mailto:jaiswaljay010@gmail.com"
+            class="brutal-border px-4 py-2 font-bold bg-white hover:bg-black hover:text-white transition-colors flex items-center gap-2"
+          >
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path
+                d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"
+              />
+            </svg>
+            Email
+          </a>
+          <a
+            href="https://github.com/Jay-Jaiswal"
+            target="_blank"
+            class="brutal-border px-4 py-2 font-bold bg-white hover:bg-black hover:text-white transition-colors flex items-center gap-2"
+          >
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+              />
+            </svg>
+            GitHub
+          </a>
+          <a
+            href="Resume_JayJaiswal.pdf"
+            target="_blank"
+            class="brutal-border px-4 py-2 font-bold bg-white hover:bg-black hover:text-white transition-colors flex items-center gap-2"
+          >
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path
+                d="M14 2h-12v16h12v-16zm-10 14v-12h8v12h-8zm16-10v16h-12v-2h10v-14h2zm-8.5 7h-5v-1h5v1zm0-3h-5v-1h5v1zm0-3h-5v-1h5v1z"
+              />
+            </svg>
+            Resume (PDF)
+          </a>
+        </div>
+      </header>
+
+      <!-- The Global Filter Bar -->
+      <section
+        class="mb-10 flex flex-col md:flex-row gap-6 justify-between items-start md:items-end"
+      >
+        <div class="flex-1">
+          <h2
+            class="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4"
+          >
+            Filter Projects
+          </h2>
+          <div
+            id="filter-container"
+            class="flex flex-wrap gap-3"
+            role="tablist"
+          >
+            <!-- Filters injected by JS -->
+          </div>
+        </div>
+
+        <!-- Brutalist Search Bar -->
+        <div class="w-full md:w-auto mt-4 md:mt-0">
+          <label for="search" class="sr-only">Search projects</label>
+          <div class="relative">
+            <input
+              type="text"
+              id="search"
+              placeholder="Search tech, titles..."
+              class="brutal-border w-full md:w-64 px-4 py-2 font-bold bg-white text-black outline-none focus:ring-4 focus:ring-gray-300 transition-all placeholder-gray-500"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- The Project Grid -->
+      <section>
+        <div
+          id="project-grid"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <!-- Projects injected by JS -->
+        </div>
+      </section>
+    </div>
+
+    <!-- Details Modal -->
+    <div
+      id="project-modal"
+      class="fixed inset-0 bg-black/80 z-50 items-center justify-center p-4 md:p-12 overflow-y-auto hidden"
+    >
+      <div
+        class="bg-white border-[8px] border-black brutal-shadow max-w-4xl w-full relative my-auto"
+      >
+        <button
+          onclick="closeModal()"
+          class="absolute -top-4 -right-4 md:-top-8 md:-right-8 bg-white border-4 border-black font-black text-2xl w-12 h-12 md:w-16 md:h-16 flex items-center justify-center hover:bg-black hover:text-white transition-colors brutal-shadow cursor-pointer"
+        >
+          X
+        </button>
+        <div class="p-6 md:p-12 max-h-[80vh] overflow-y-auto">
+          <h2
+            id="modal-title"
+            class="text-3xl md:text-5xl font-black mb-4 uppercase tracking-tighter"
+          ></h2>
+          <div class="flex flex-wrap gap-2 mb-8" id="modal-tags"></div>
+          <div
+            class="prose max-w-none font-medium text-lg leading-relaxed space-y-4"
+            id="modal-content"
+          >
+            <!-- Readme content goes here -->
+          </div>
+          <div class="mt-8 pt-6 border-t-4 border-black flex gap-4">
+            <a
+              id="modal-github"
+              href="#"
+              target="_blank"
+              class="px-6 py-3 bg-white text-black border-4 border-black font-bold hover:bg-black hover:text-white transition-colors uppercase tracking-wide"
+              >View on GitHub</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Project Data constraints
+      const filters = [
+        "All",
+        "Web App",
+        "Python / AI",
+        "Data Engineering",
+        "Java / Desktop",
+      ];
+
+      // Exact project data provided from GitHub
+      const projects = [
+        {
+          id: 1,
+          title: "TripWise",
+          categories: ["Web App", "Python / AI"],
+          tags: ["TypeScript", "Web App"],
+          desc: "A comprehensive travel planner and community application built with modern web technologies.",
+          detailedOverview: `
+                <p><strong>Overview:</strong> A comprehensive travel planner and community application built with modern web technologies.</p>
+                <div class="mt-6 p-4 bg-gray-100 border-l-4 border-black">
+                    <p class="mb-4">TripWise is a comprehensive travel planning platform built with modern web technologies and Python/AI integrations. It allows users to manage itineraries, discover community-driven travel recommendations, and streamline the booking process.</p>
+                    <p class="font-bold">Key Technical Details:</p>
+                    <ul class="list-disc pl-5 mt-2 marker:text-black">
+                        <li>TypeScript and Web App architecture setup and optimization</li>
+                        <li>Delivers a seamless user experience while leveraging intelligent algorithms to suggest optimal routes and destinations.</li>
+                        <li>Modular architecture and scalable codebase</li>
+                    </ul>
+                </div>
+          `,
+          github: "https://github.com/Jay-Jaiswal/TripWise",
+        },
+        {
+          id: 2,
+          title: "DataFixer",
+          categories: ["Data Engineering", "Python / AI"],
+          tags: ["Python", "Data Engineering"],
+          desc: "A smart data-cleaning application featuring conversational UI to standardize messy CSV and JSON datasets.",
+          detailedOverview: `
+                <p><strong>Overview:</strong> A smart data-cleaning application featuring conversational UI to standardize messy CSV and JSON datasets.</p>
+                <div class="mt-6 p-4 bg-gray-100 border-l-4 border-black">
+                    <p class="mb-4">DataFixer is an AI-powered data cleaning application designed to streamline the preprocessing of messy datasets. Equipped with a conversational UI, it allows users to upload CSV and JSON files.</p>
+                    <p class="font-bold">Key Technical Details:</p>
+                    <ul class="list-disc pl-5 mt-2 marker:text-black">
+                        <li>Python and Data Engineering pipelines integration</li>
+                        <li>Easily standardizes formats, handles missing values, and identifies outliers without writing complex scripts.</li>
+                        <li>Clean CLI/Conversational UX with highly accurate parsing algorithms</li>
+                    </ul>
+                </div>
+          `,
+          github: "https://github.com/Jay-Jaiswal/DataFixer",
+        },
+        {
+          id: 3,
+          title: "DataFixer-Pro",
+          categories: ["Data Engineering", "Web App"],
+          tags: ["TypeScript", "Data Engineering"],
+          desc: "The advanced, professional-grade version of the DataFixer tool built for robust web environments.",
+          detailedOverview: `
+                <p><strong>Overview:</strong> The advanced, professional-grade version of the DataFixer tool built for robust web environments.</p>
+                <div class="mt-6 p-4 bg-gray-100 border-l-4 border-black">
+                    <p class="mb-4">Building on the core engine of DataFixer, the Pro version offers robust, enterprise-grade data engineering capabilities. It features an advanced web-based dashboard allowing teams to collaborate on complex data pipelines.</p>
+                    <p class="font-bold">Key Technical Details:</p>
+                    <ul class="list-disc pl-5 mt-2 marker:text-black">
+                        <li>TypeScript and advanced Data Engineering capabilities</li>
+                        <li>Export data directly into databases and schedule automated background cleaning tasks.</li>
+                        <li>Scalable UI framework with seamless backend synchronization</li>
+                    </ul>
+                </div>
+          `,
+          github: "https://github.com/Jay-Jaiswal/DataFIxer-Pro",
+        },
+        {
+          id: 4,
+          title: "MedCase",
+          categories: ["Python / AI"],
+          tags: ["Python", "Machine Learning"],
+          desc: "An intelligent medical case analysis and management tool built with Python.",
+          detailedOverview: `
+                <p><strong>Overview:</strong> An intelligent medical case analysis and management tool built with Python.</p>
+                <div class="mt-6 p-4 bg-gray-100 border-l-4 border-black">
+                    <p class="mb-4">MedCase leverages Python and Machine Learning to provide an intelligent medical case management system. The platform assists healthcare professionals by analyzing patient histories and organizing unstructured medical records.</p>
+                    <p class="font-bold">Key Technical Details:</p>
+                    <ul class="list-disc pl-5 mt-2 marker:text-black">
+                        <li>Python and Machine Learning orchestration</li>
+                        <li>Offers predictive insights based on historical medical data to streamline diagnosis and treatment planning.</li>
+                        <li>Focuses heavily on data privacy, secure processing, and highly accurate analytical performance</li>
+                    </ul>
+                </div>
+          `,
+          github: "https://github.com/Jay-Jaiswal/MedCase",
+        },
+        {
+          id: 5,
+          title: "Campus-Safety",
+          categories: ["Python / AI"],
+          tags: ["Python", "Backend"],
+          desc: "A Python-based safety logging and alerting system optimized for campus environments.",
+          detailedOverview: `
+                <p><strong>Overview:</strong> A Python-based safety logging and alerting system optimized for campus environments.</p>
+                <div class="mt-6 p-4 bg-gray-100 border-l-4 border-black">
+                    <p class="mb-4">Designed specifically for educational institutions, Campus-Safety is a backend-driven event logging and alerting system. Written in Python, it provides real-time emergency broadcasting and incident tracking.</p>
+                    <p class="font-bold">Key Technical Details:</p>
+                    <ul class="list-disc pl-5 mt-2 marker:text-black">
+                        <li>Robust Python Backend architecture</li>
+                        <li>Automated report generation to ensure swift administrative response and maintain a secure environment.</li>
+                        <li>Highly reliable server-side implementation prioritizing uptime and rapid message delivery</li>
+                    </ul>
+                </div>
+          `,
+          github: "https://github.com/Jay-Jaiswal/campus-safety",
+        },
+        {
+          id: 6,
+          title: "ClinicWEB",
+          categories: ["Web App", "Java / Desktop"],
+          tags: ["Java", "Web App"],
+          desc: "A comprehensive clinic management portal handling patient records, appointments, and billing.",
+          detailedOverview: `
+                <p><strong>Overview:</strong> A comprehensive clinic management portal handling patient records, appointments, and billing.</p>
+                <div class="mt-6 p-4 bg-gray-100 border-l-4 border-black">
+                    <p class="mb-4">ClinicWEB is an end-to-end clinic management portal built with Java. It modernizes daily clinic operations by providing secure digital patient records, automated appointment scheduling, and integrated billing systems.</p>
+                    <p class="font-bold">Key Technical Details:</p>
+                    <ul class="list-disc pl-5 mt-2 marker:text-black">
+                        <li>Java and Web App framework routing</li>
+                        <li>Web-based interface ensures that clinical staff can efficiently manage the patient lifecycle from check-in to checkout.</li>
+                        <li>Extensive database relationships for complex medical scheduling</li>
+                    </ul>
+                </div>
+          `,
+          github: "https://github.com/Jay-Jaiswal/ClinicWEB",
+        },
+        {
+          id: 7,
+          title: "Electricity Billing System",
+          categories: ["Java / Desktop"],
+          tags: ["Java", "Desktop App"],
+          desc: "A native Java desktop application designed to streamline electricity consumption and billing management.",
+          detailedOverview: `
+                <p><strong>Overview:</strong> A native Java desktop application designed to streamline electricity consumption and billing management.</p>
+                <div class="mt-6 p-4 bg-gray-100 border-l-4 border-black">
+                    <p class="mb-4">A robust Java Desktop application tailored for utility management. It simplifies the complex workflow of calculating electricity consumption, managing consumer tariffs, and generating accurate monthly invoices.</p>
+                    <p class="font-bold">Key Technical Details:</p>
+                    <ul class="list-disc pl-5 mt-2 marker:text-black">
+                        <li>Java and Desktop App GUI environment (JavaFX/Swing)</li>
+                        <li>Designed for scale, ensuring precision in billing cycles and comprehensive usage reports.</li>
+                        <li>Object-oriented design patterns with strong local state management</li>
+                    </ul>
+                </div>
+          `,
+          github: "https://github.com/Jay-Jaiswal/Electricity_Billing_System",
+        },
+        {
+          id: 8,
+          title: "SnackIt",
+          categories: ["Web App"],
+          tags: ["TypeScript", "E-Commerce"],
+          desc: "A modern web application built with TypeScript, focusing on snack ordering and delivery logistics.",
+          detailedOverview: `
+                <p><strong>Overview:</strong> A modern web application built with TypeScript, focusing on snack ordering and delivery logistics.</p>
+                <div class="mt-6 p-4 bg-gray-100 border-l-4 border-black">
+                    <p class="mb-4">SnackIt is a fast, responsive e-commerce web application focused on snack ordering. Built with TypeScript, the platform handles dynamic product catalogs, seamless shopping cart logistics, and quick checkout processes.</p>
+                    <p class="font-bold">Key Technical Details:</p>
+                    <ul class="list-disc pl-5 mt-2 marker:text-black">
+                        <li>TypeScript and E-Commerce state management</li>
+                        <li>User interface is optimized for both desktop and mobile, ensuring high conversion rates and accessible routing.</li>
+                        <li>Integrations for smooth payment flows and inventory tracking</li>
+                    </ul>
+                </div>
+          `,
+          github: "https://github.com/Jay-Jaiswal/SnackIt",
+        },
+        {
+          id: 9,
+          title: "Suruchi",
+          categories: ["Web App"],
+          tags: ["TypeScript", "Web App"],
+          desc: "A high-performance TypeScript project handling advanced frontend templating and functionality.",
+          detailedOverview: `
+                <p><strong>Overview:</strong> A high-performance TypeScript project handling advanced frontend templating and functionality.</p>
+                <div class="mt-6 p-4 bg-gray-100 border-l-4 border-black">
+                    <p class="mb-4">Suruchi showcases advanced frontend engineering using TypeScript. It is a high-performance web application designed with modular templating and state-of-the-art UI functionality.</p>
+                    <p class="font-bold">Key Technical Details:</p>
+                    <ul class="list-disc pl-5 mt-2 marker:text-black">
+                        <li>Advanced TypeScript and Web App architecture</li>
+                        <li>Emphasizes clean code architecture, smooth state management, and highly interactive user components.</li>
+                        <li>Fast load times with optimized rendering paths</li>
+                    </ul>
+                </div>
+          `,
+          github: "https://github.com/Jay-Jaiswal/Suruchi",
+        },
+      ];
+
+      let currentFilter = "All";
+      let searchQuery = "";
+      const filterContainer = document.getElementById("filter-container");
+      const projectGrid = document.getElementById("project-grid");
+      const searchInput = document.getElementById("search");
+
+      // Setup Search Listener
+      searchInput.addEventListener("input", (e) => {
+        searchQuery = e.target.value.toLowerCase();
+        renderProjects();
+      });
+
+      // Setup Keyboard Navigation for Filters
+      filterContainer.addEventListener("keydown", (e) => {
+        const buttons = Array.from(filterContainer.querySelectorAll("button"));
+        const index = buttons.indexOf(document.activeElement);
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+          e.preventDefault();
+          const next = (index + 1) % buttons.length;
+          buttons[next].focus();
+        } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+          e.preventDefault();
+          const prev = (index - 1 + buttons.length) % buttons.length;
+          buttons[prev].focus();
+        }
+      });
+
+      // Console Log Easter Egg
+      console.log(
+        "%c HIRED! %c\n\nLooking for a developer who ships?\nEmail me: jaiswaljay010@gmail.com\n\n",
+        "font-size: 40px; font-weight: 900; color: white; background: black; border: 4px solid white; padding: 10px;",
+        "font-size: 16px; font-family: monospace;",
+      );
+
+      // Modal Logic
+      const projectModal = document.getElementById("project-modal");
+      const modalTitle = document.getElementById("modal-title");
+      const modalTags = document.getElementById("modal-tags");
+      const modalContent = document.getElementById("modal-content");
+      const modalGithub = document.getElementById("modal-github");
+
+      // Close on clicking outside the modal content
+      projectModal.addEventListener("click", (e) => {
+        if (e.target === projectModal) closeModal();
+      });
+
+      // Close on Escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !projectModal.classList.contains("hidden")) {
+          closeModal();
+        }
+      });
+
+      function openModal(id) {
+        const proj = projects.find((p) => p.id === id);
+        if (!proj) return;
+
+        modalTitle.textContent = proj.title;
+
+        modalTags.innerHTML = proj.tags
+          .map(
+            (tag) =>
+              `<span class="inline-block bg-black text-white text-xs font-bold px-2 py-1 border-2 border-black uppercase tracking-wider">${tag}</span>`,
+          )
+          .join("");
+
+        modalContent.innerHTML =
+          '<p class="text-center font-bold">Loading README...</p>';
+        modalGithub.href = proj.github;
+
+        // Fetch README from GitHub
+        const repoName = proj.github.split("/").pop();
+        const rawUrlMain = `https://raw.githubusercontent.com/Jay-Jaiswal/${repoName}/main/README.md`;
+        const rawUrlMaster = `https://raw.githubusercontent.com/Jay-Jaiswal/${repoName}/master/README.md`;
+
+        async function fetchReadme() {
+          try {
+            let response = await fetch(rawUrlMain);
+            if (!response.ok) {
+              response = await fetch(rawUrlMaster);
+            }
+            if (response.ok) {
+              const text = await response.text();
+              modalContent.innerHTML = marked.parse(text);
+
+              // Apply Tailwind prose/brutalist styles to markdown elements
+              const headers = modalContent.querySelectorAll(
+                "h1, h2, h3, h4, h5, h6",
+              );
+              headers.forEach((h) =>
+                h.classList.add("font-black", "mt-6", "mb-4"),
+              );
+
+              const links = modalContent.querySelectorAll("a");
+              links.forEach((l) =>
+                l.classList.add(
+                  "underline",
+                  "hover:text-gray-600",
+                  "font-bold",
+                ),
+              );
+
+              const lists = modalContent.querySelectorAll("ul, ol");
+              lists.forEach((l) =>
+                l.classList.add("pl-5", "list-disc", "mb-4"),
+              );
+
+              const codeBlocks = modalContent.querySelectorAll("pre");
+              codeBlocks.forEach((cb) =>
+                cb.classList.add(
+                  "bg-gray-100",
+                  "p-4",
+                  "border-2",
+                  "border-black",
+                  "overflow-x-auto",
+                  "mb-4",
+                ),
+              );
+
+              const inlineCodes =
+                modalContent.querySelectorAll("code:not(pre code)");
+              inlineCodes.forEach((c) =>
+                c.classList.add(
+                  "bg-gray-200",
+                  "px-1",
+                  "rounded",
+                  "text-black",
+                  "font-mono",
+                  "border",
+                  "border-gray-400",
+                ),
+              );
+            } else {
+              // Fallback to detailed Overview if no README exists
+              modalContent.innerHTML = proj.detailedOverview;
+            }
+          } catch (e) {
+            // Fallback on network error
+            modalContent.innerHTML = proj.detailedOverview;
+          }
+        }
+        fetchReadme();
+
+        projectModal.classList.remove("hidden");
+        projectModal.classList.add("flex");
+        document.body.style.overflow = "hidden"; // Prevent background scrolling
+      }
+
+      function closeModal() {
+        projectModal.classList.add("hidden");
+        projectModal.classList.remove("flex");
+        document.body.style.overflow = "";
+      }
+
+      // Render the pill-shaped filter buttons
+      function renderFilters() {
+        filterContainer.innerHTML = "";
+        filters.forEach((filter, index) => {
+          const btn = document.createElement("button");
+          btn.textContent = filter;
+          btn.setAttribute("role", "tab");
+          btn.setAttribute("aria-selected", currentFilter === filter);
+          btn.tabIndex = currentFilter === filter ? 0 : -1;
+
+          const isActive = currentFilter === filter;
+
+          // Brutalist pill styling
+          btn.className =
+            `px-5 py-2 rounded-full font-bold border-2 border-black transition-colors text-sm uppercase tracking-wide focus:outline-none focus:ring-4 focus:ring-gray-300 ` +
+            `${isActive ? "bg-black text-white" : "bg-white text-black hover:bg-gray-200"}`;
+
+          btn.onclick = () => {
+            currentFilter = filter;
+            renderFilters(); // Re-render to update active state
+            renderProjects(); // Update grid
+
+            // Focus back on the active button after re-render so keyboard nav isn't lost
+            const newActive = filterContainer.querySelector(
+              `button[aria-selected="true"]`,
+            );
+            if (newActive) newActive.focus();
+          };
+          filterContainer.appendChild(btn);
+        });
+      }
+
+      // Render the responsive project card grid
+      function renderProjects() {
+        projectGrid.innerHTML = "";
+
+        // Filter logic (Category + Search)
+        let filteredProjects =
+          currentFilter === "All"
+            ? projects
+            : projects.filter((p) => p.categories.includes(currentFilter));
+
+        if (searchQuery) {
+          filteredProjects = filteredProjects.filter(
+            (p) =>
+              p.title.toLowerCase().includes(searchQuery) ||
+              p.desc.toLowerCase().includes(searchQuery) ||
+              p.tags.some((t) => t.toLowerCase().includes(searchQuery)),
+          );
+        }
+
+        if (filteredProjects.length === 0) {
+          projectGrid.innerHTML = `<p class="text-gray-500 font-bold col-span-full py-10 text-center">No projects found matching your criteria.</p>`;
+          return;
+        }
+
+        // Generate HTML for each card
+        filteredProjects.forEach((proj) => {
+          // UI tags
+          const tagsHtml = proj.tags
+            .map(
+              (tag) =>
+                `<span class="inline-block bg-white text-black text-xs font-bold px-2 py-1 mr-2 mb-2 border-2 border-black uppercase tracking-wider">${tag}</span>`,
+            )
+            .join("");
+
+          // Only render Live Demo button if proj.demo exists (currently none have it, to add it just add demo: "url" to the data object)
+          const liveDemoHtml = proj.demo
+            ? `<a href="${proj.demo}" target="_blank" onclick="event.stopPropagation()" class="flex-1 text-center bg-black text-white border-2 border-black font-bold py-2 text-sm hover:bg-transparent hover:text-black transition-colors uppercase tracking-wide dark:hover:text-white">Live Demo</a>`
+            : ``;
+
+          const cardHTML = `
+                    <div onclick="openModal(${proj.id})" class="brutal-border bg-white p-4 flex flex-col h-full brutal-shadow brutal-shadow-hover transition-all duration-200 group cursor-pointer">
+                        <!-- Image Placeholder (Aspect Video) -->
+                        <div class="w-full aspect-video bg-gray-100 border-2 border-black mb-5 flex items-center justify-center overflow-hidden relative group-hover:bg-gray-200 transition-colors">
+                            <span class="text-gray-400 font-black tracking-widest text-xs uppercase diagonal-stripes">Read More</span>
+                        </div>
+                        
+                        <!-- Details -->
+                        <h3 class="text-2xl font-black mb-2 tracking-tight">${proj.title}</h3>
+                        <p class="text-gray-800 text-sm mb-5 flex-grow font-medium leading-relaxed border-l-4 border-black pl-3">${proj.desc}</p>
+                        
+                        <!-- Tags Container -->
+                        <div class="mb-6">
+                            ${tagsHtml}
+                        </div>
+                        
+                        <!-- Minimum Buttons -->
+                        <div class="flex gap-3 mt-auto pt-4 border-t-2 border-black">
+                            ${liveDemoHtml}
+                            <a href="${proj.github}" target="_blank" onclick="event.stopPropagation()" class="flex-1 text-center bg-white text-black border-2 border-black font-bold py-2 text-sm hover:bg-black hover:text-white transition-colors uppercase tracking-wide">GitHub Repo</a>
+                        </div>
+                    </div>
+                `;
+          projectGrid.insertAdjacentHTML("beforeend", cardHTML);
+        });
+      }
+
+      // Initialize App
+      renderFilters();
+      renderProjects();
+    </script>
+  </body>
+</html>
