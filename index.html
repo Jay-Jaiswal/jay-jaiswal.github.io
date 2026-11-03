@@ -599,7 +599,7 @@
             )
             .join("");
 
-          // Only render Live Demo button if proj.demo exists (currently none have it, to add it just add demo: "url" to the data object)
+          // Only render the Live Demo button for projects with a demo URL.
           const liveDemoHtml = proj.demo
             ? `<a href="${proj.demo}" target="_blank" onclick="event.stopPropagation()" class="flex-1 text-center bg-black text-white border-2 border-black font-bold py-2 text-sm hover:bg-transparent hover:text-black transition-colors uppercase tracking-wide dark:hover:text-white">Live Demo</a>`
             : ``;

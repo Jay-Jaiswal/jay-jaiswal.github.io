@@ -139,7 +139,6 @@ window.CATALOGUE_PROJECTS = [
       ],
     ),
     github: "https://github.com/Jay-Jaiswal/DataFIxer-Pro",
-    demo: "https://data-fixer-pro.vercel.app",
   },
   {
     id: 8,
@@ -157,7 +156,6 @@ window.CATALOGUE_PROJECTS = [
       ],
     ),
     github: "https://github.com/Jay-Jaiswal/Crafta",
-    demo: "https://crafta-blush.vercel.app",
   },
   {
     id: 9,
@@ -175,7 +173,6 @@ window.CATALOGUE_PROJECTS = [
       ],
     ),
     github: "https://github.com/Jay-Jaiswal/NagarDrishti",
-    demo: "https://aetriks-mvp.vercel.app",
   },
   {
     id: 10,
@@ -210,7 +207,6 @@ window.CATALOGUE_PROJECTS = [
       ],
     ),
     github: "https://github.com/Jay-Jaiswal/Portfolio",
-    demo: "https://portfolio-jay-jaiswals-projects.vercel.app",
   },
   {
     id: 12,
