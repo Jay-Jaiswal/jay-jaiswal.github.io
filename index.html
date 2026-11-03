@@ -6,6 +6,7 @@
     <title>Jay Jaiswal | Project Catalog</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="projects.js"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap"
       rel="stylesheet"
@@ -185,6 +186,10 @@
         "Data Engineering",
         "Java / Desktop",
       ];
+
+      // Prefer the current catalogue data kept in projects.js. The inline data
+      // remains as a no-network fallback for older cached deployments.
+      const activeFilters = window.CATALOGUE_FILTERS || filters;
 
       // Exact project data provided from GitHub
       const projects = [
@@ -370,6 +375,8 @@
         },
       ];
 
+      const activeProjects = window.CATALOGUE_PROJECTS || projects;
+
       let currentFilter = "All";
       let searchQuery = "";
       const filterContainer = document.getElementById("filter-container");
@@ -424,7 +431,7 @@
       });
 
       function openModal(id) {
-        const proj = projects.find((p) => p.id === id);
+        const proj = activeProjects.find((p) => p.id === id);
         if (!proj) return;
 
         modalTitle.textContent = proj.title;
@@ -527,7 +534,7 @@
       // Render the pill-shaped filter buttons
       function renderFilters() {
         filterContainer.innerHTML = "";
-        filters.forEach((filter, index) => {
+        activeFilters.forEach((filter, index) => {
           const btn = document.createElement("button");
           btn.textContent = filter;
           btn.setAttribute("role", "tab");
@@ -563,8 +570,10 @@
         // Filter logic (Category + Search)
         let filteredProjects =
           currentFilter === "All"
-            ? projects
-            : projects.filter((p) => p.categories.includes(currentFilter));
+            ? activeProjects
+            : activeProjects.filter((p) =>
+                p.categories.includes(currentFilter),
+              );
 
         if (searchQuery) {
           filteredProjects = filteredProjects.filter(
